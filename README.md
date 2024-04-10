@@ -29,4 +29,5 @@ Django==4.1
 Pillow==9.3.0
 python-dotenv==0.20.0
 sqlparse==0.4.2
+
 Essa aplicação web oferece uma solução completa e eficiente para o cadastro e exibição de planilhas online. Combinando tecnologias modernas e recursos poderosos, ela promete proporcionar uma experiência fluida e segura para os usuários.
