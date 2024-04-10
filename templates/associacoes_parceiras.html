@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Associações Parceiras</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alike&display=swap" rel="stylesheet">
+  <style>
+    /* Estilo para ocultar o cabeçalho da tabela inicialmente */
+    #dashboard-table thead {
+      display: none;
+    }
+  </style>
+</head>
+<body class="cadastro-lideranca">
+    <header class="fixed-header">
+        <div class="line"></div>
+        <div class="container header--area">
+            <div class="header--center">
+                <a href=""><img src="{% static 'assets/logo.png' %}" alt="Logo da Empresa"></a>
+            </div>            
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <div class="sidebar alike-regular">
+        <a href="#" id="cadastro-link">Cadastro</a>
+        <a href="#" id="dashboard-link">Dashboard</a>
+        <a href="{% url 'pagina2' %}">Retornar</a>
+    </div>
+   
+    <!-- Formulário de Cadastro -->
+    <div class="container content" id="cadastro-form" style="display:none;">
+        <h1>Cadastro Associações Parceiras</h1>
+        <form method="post" action="{% url 'processar_cadastro_associacoes_parceiras' %}" onsubmit="event.preventDefault(); processarCadastro(this);">
+            {% csrf_token %}
+            <label for="instituicao">Instituição:</label>
+            <input type="text" id="instituicao" name="instituicao" required>
+        
+            <label for="responsavel">Responsável:</label>
+            <input type="text" id="responsavel" name="responsavel" required>
+        
+            <label for="contato">Contato:</label>
+            <input type="text" id="contato" name="contato" required>
+        
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+        
+            <label for="regiao_atuante">Região Atuante:</label>
+            <input type="text" id="regiao_atuante" name="regiao_atuante" required>
+        
+            <label for="informacoes_gerais">Informações Gerais:</label>
+            <textarea id="informacoes_gerais" name="informacoes_gerais"></textarea>
+        
+            <input type="submit" value="Cadastrar">
+        </form>
+        
+    </div>
+    <div class="container content" id="dashboard-table">
+    <!-- Tabela para exibir os dados do Dashboard -->
+    <table id="dashboard-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Instituição</th>
+                <th>Responsável</th>
+                <th>Contato</th>
+                <th>Endereço</th>
+                <th>Região Atuante</th>
+                <th>Informações Gerais</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-dados">
+            <!-- Os dados da tabela serão preenchidos dinamicamente aqui -->
+        </tbody>    
+    </table>
+</div>
+    <div class="footer">
+        <p>Desenvolvido por Felipe Ferrão</p>
+    </div>
+
+    <!-- Referência ao arquivo JavaScript -->
+    <script>
+        // URL para recuperar os dados do dashboard das Associações Parceiras
+        const dashboardAssociacaoUrl = "/dashboard_associacao/";
+
+        // Função para exibir o formulário de cadastro de Associações Parceiras e ocultar a tabela do dashboard
+        function exibirCadastro() {
+            document.getElementById("cadastro-form").style.display = "block";
+            document.getElementById("dashboard-table").style.display = "none";
+        }
+
+        // Função para exibir a tabela do dashboard de Associações Parceiras e ocultar o formulário de cadastro
+        function exibirDashboard() {
+            fetch(dashboardAssociacaoUrl)
+                .then(response => response.json())
+                .then(data => preencherTabelaDashboard(data))
+                .catch(error => console.error("Erro ao carregar dados do Dashboard:", error));
+        }
+
+        // Função para preencher a tabela do dashboard com os dados recebidos da requisição AJAX
+        function preencherTabelaDashboard(data) {
+            const tbody = document.querySelector("#dashboard-table tbody");
+            tbody.innerHTML = ""; // Limpa os dados antigos da tabela
+
+            data.assoc_parceiras.forEach(assocParceira => {
+                const row = `
+                    <tr>
+                        <td>${assocParceira.id}</td>
+                        <td>${assocParceira.instituicao}</td>
+                        <td>${assocParceira.responsavel}</td>
+                        <td>${assocParceira.contato}</td>
+                        <td>${assocParceira.endereco}</td>
+                        <td>${assocParceira.regiao_atuante}</td>
+                        <td>${assocParceira.informacoes_gerais}</td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML("beforeend", row);
+            });
+
+            // Exibe a tabela do dashboard e oculta o formulário de cadastro
+            document.getElementById("cadastro-form").style.display = "none";
+            document.getElementById("dashboard-table").style.display = "block";
+        }
+
+        // Função para processar o cadastro e exibir o dashboard após o sucesso
+        function processarCadastro(form) {
+            const url = form.action;
+            const formData = new FormData(form);
+            fetch(url, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Se o cadastro for bem-sucedido, exiba o dashboard e limpe o formulário
+                    exibirDashboard();
+                    form.reset(); // Limpa os campos do formulário
+                } else {
+                    console.error("Erro ao processar o cadastro:", data.error);
+                }
+            })
+            .catch(error => console.error("Erro ao processar o cadastro:", error));
+        }
+
+        // Adicione event listeners aos links do menu para chamar as funções apropriadas
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("cadastro-link").addEventListener("click", exibirCadastro);
+            document.getElementById("dashboard-link").addEventListener("click", exibirDashboard);
+        });
+    </script>
+    </body>
+</html>

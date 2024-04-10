@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Login</title>
+</head>
+<body class="index-page">
+    <div class="login-container">
+        <img src="{% static 'assets/logo.png' %}" alt="Logo" class="logo">
+        <div class="login-form-container">
+            <form class="login-form" id="login-form" method="POST">
+                {% csrf_token %}
+                <h2>Login</h2>
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+               
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="botoes">
+                <button type="submit">Entrar</button>
+                <a href="{% url 'admin:index' %}" class="admin-button">Admin</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário tradicional
+            
+            // Cria um objeto FormData para enviar os dados do formulário via POST
+            const formData = new FormData(this);
+    
+            // Envia os dados do formulário para a autenticação do Django
+            fetch("{% url 'login' %}", {
+                method: "POST",
+                body: formData,
+                credentials: "same-origin" // Garante que o cookie de sessão seja enviado com a requisição
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Se a resposta for OK, redireciona o usuário para a página de módulos
+                    window.location.href = "{% url 'pagina2' %}";
+                } else {
+                    // Se houver erro na autenticação, exibe uma mensagem de erro
+                    response.json().then(data => {
+                        alert("Erro de autenticação:\n" + data.error_message);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao processar a requisição:", error);
+            });
+        });
+    </script>
+    
+</body>
+</html>

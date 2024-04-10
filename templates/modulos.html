@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MÓDULOS</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="modulos-page">
+  <div class="header">
+    <img src="{% static 'assets/logo.png' %}" alt="Logo da Empresa">
+  </div>
+  <div class="container">
+    <div class="block">
+      <h2>Liderança</h2>
+      <!-- Adicionando um link para a página de cadastro de liderança -->
+      <a href="{% url 'cadastro_lideranca' %}" class="btn-entrar">ENTRAR</a>     
+    </div>
+    <div class="block">
+      <h2>Associações Parceiras</h2>
+      <!-- Adicionando um link para a página de cadastro de liderança -->
+      <a href="{% url 'associacoes_parceiras' %}" class="btn-entrar">ENTRAR</a>
+    </div>
+    <div class="block">
+      <h2>Boca de Urna</h2>
+      <!-- Adicionando um link para a página de cadastro de liderança -->
+      <a href="" class="btn-entrar">ENTRAR</a>  
+    </div>
+    <div class="block">
+      <h2>Cadastro Beneficiados</h2>
+      <!-- Adicionando um link para a página de cadastro de liderança -->
+      <a href="" class="btn-entrar">Entrar</a>
+    </div>
+  </div>
+  <div class="footer">
+    <!-- Adicione o botão de logout aqui -->
+    <form action="{% url 'logout' %}" method="post" id="logout-form">
+      {% csrf_token %}
+      <button type="submit">SAIR</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Liderança</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alike&display=swap" rel="stylesheet">
+</head>
+<body class="cadastro-lideranca">
+    <header class="fixed-header">
+        <div class="line"></div>
+        <div class="container header--area">
+            <div class="header--center">
+                <a href=""><img src="{% static 'assets/logo.png' %}" alt="Logo da Empresa"></a>
+            </div>            
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <div class="sidebar alike-regular">
+        <a href="#" id="cadastro-link">Cadastro</a>
+        <a href="#" id="dashboard-link">Dashboard</a>
+        <a href="{% url 'pagina2' %}">Retornar</a>
+    </div>
+   
+    <!-- Formulário de Cadastro -->
+    <div class="container content" id="cadastro-form" style="display:none;">
+        <h1>Cadastro de Liderança</h1>
+        <form method="post" action="{% url 'processar_cadastro_lideranca' %}">
+            {% csrf_token %}
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+
+            <label for="estado_civil">Estado Civil:</label>
+            <select id="estado_civil" name="estado_civil" required>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+            </select>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="regiao_atuante">Região Atuante:</label>
+            <input type="text" id="regiao_atuante" name="regiao_atuante" required>
+
+            <label for="assessor_coordenador">Assessor/Coordenador:</label>
+            <input type="text" id="assessor_coordenador" name="assessor_coordenador" required>
+
+            <label for="informacoes_gerais">Informações Gerais:</label>
+            <textarea id="informacoes_gerais" name="informacoes_gerais"></textarea>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+    <div class="container content" id="dashboard-table" style="display:none;">
+        <!-- Tabela para exibir os dados do Dashboard -->
+        <table id="dashboard-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Sexo</th>
+                    <th>Estado Civil</th>
+                    <th>Endereço</th>
+                    <th>Região Atuante</th>
+                    <th>Assessor/Coordenador</th>
+                    <th>Informações Gerais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os dados da tabela serão preenchidos dinamicamente aqui -->
+            </tbody>    
+        </table>
+    </div>
+    <div class="footer">
+        <p>Desenvolvido por Felipe Ferrão</p>
+    </div>
+
+    <!-- Referência ao arquivo JavaScript -->
+    <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

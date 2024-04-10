@@ -1,0 +1,417 @@
+.index-page{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #212121;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+.login-container {
+	display: grid;
+    justify-content: center;
+    align-content: space-evenly;	
+	padding: 20px;
+}
+
+.logo {
+  max-width: 300px; /* Definindo o tamanho máximo do logo */
+}
+
+.login-form-container {
+  text-align: center;
+  margin: 0 auto; /* Centralizando o container do formulário */
+  max-width: 400px; /* Definindo a largura máxima do container do formulário */
+  background-color: #FAB915;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  text-align: left; /* Alinhando o texto do formulário à esquerda */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+button  {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.botoes{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+}
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+/* MODULOS */
+
+.modulos-page {
+  
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #212121;
+    display: block;
+  
+  .header {
+    background-color: #212121;
+    text-align: center; /* Centraliza o texto do cabeçalho */
+  }
+
+  .header img {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto; /* Centraliza horizontalmente a imagem do cabeçalho */
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+  }
+
+  .block {
+    width: calc(50% - 20px);
+    height: 250px;
+    background-color: #006CAD;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #ffffff; /* Texto em branco para maior contraste */
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px; /* Tamanho maior para o título */
+  }
+
+  .btn-entrar {
+    background-color: #FAB915;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s; /* Efeito de transição suave ao passar o mouse */
+    text-decoration: none; /* Remove a decoração de sublinhado */
+    font-style: normal; /* Garante que o texto não seja exibido em itálico */
+  }
+
+  .btn-entrar:hover {
+    background-color: #f0f0f0; /* Cor de fundo mais clara ao passar o mouse */
+    color: #000000; /* Texto em preto para maior contraste */
+  }
+
+  .footer {
+    text-align: center;
+    background-color: #212121;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 14px;
+  }
+  .footer2 {
+    text-align: center;
+    background-color: #212121;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer2 p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+
+
+
+
+
+
+  @media screen and (max-width: 768px) {
+    .block {
+      width: calc(100% - 20px);
+    }
+  }
+}
+
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+/* CADASTRO LIDERANÇA */
+ 
+.cadastro-lideranca {
+  font-family: Arial, sans-serif;
+  background-color: #212121; /* Cor de fundo desejada */
+  margin: 0;
+  padding: 0;
+}
+
+.fixed-header {
+  height: 132px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #212121; /* Cor de fundo desejada */
+}
+
+header {
+  background-color: #212121; /* Cor de fundo desejada */
+  border-bottom: 1px solid #ccc;
+  padding: 1px 0;
+}
+
+.header--area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header--center {
+  text-align: center;
+}
+
+.header--center img {
+  max-width: 150px; /* Limita o tamanho do logo */
+  margin-right: 10px;
+}
+
+/* Estilos para o menu lateral */
+/* Estilos para o menu lateral em telas maiores */
+.sidebar {
+  margin-top: 137px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333; /* Cor de fundo desejada */
+  padding-top: 70px; /* Ajuste de espaço para o cabeçalho fixo */
+  color: white; /* Cor do texto em branco */
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: white; /* Cor do texto em branco */
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+}
+
+/* Adição da classe para a fonte "Alike" */
+.alike-regular {
+  font-family: "Alike", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Estilos para o menu lateral em telas menores (responsivo) */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%; /* Definir a largura como 100% em telas menores */
+    margin-top: 0; /* Remover a margem superior */
+    padding-top: 20px; /* Ajustar o preenchimento superior */
+    overflow-y: auto; /* Adicionar rolagem vertical quando necessário */
+  }
+}
+/* Estilos para o formulário de cadastro */
+#cadastro-form {
+  background-color: #212121; /* Cor de fundo desejada */
+  color: white; /* Cor do texto */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 10px; /* Borda arredondada */
+  margin-top: 60px; /* Espaçamento superior */
+  margin-bottom: 60px; /* Espaçamento inferior */
+}
+
+#cadastro-form label {
+  font-size: 16px; /* Tamanho da fonte para as etiquetas */
+}
+
+#cadastro-form input[type="text"],
+#cadastro-form input[type="date"],
+#cadastro-form select,
+#cadastro-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  background-color: #333; /* Cor de fundo dos campos de entrada */
+  color: white; /* Cor do texto nos campos de entrada */
+  border: none;
+  border-radius: 5px;
+}
+
+#cadastro-form input[type="submit"] {
+  background-color: #FABA15;
+  color: rgb(0, 0, 0);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cadastro-form input[type="submit"]:hover {
+  background-color: #f0f0f0; /* Cor de fundo mais clara ao passar o mouse */
+  color: #000000; /* Texto em preto para maior contraste */
+}
+
+#cadastro-form textarea {
+  min-height: 100px; /* Altura mínima para o campo de texto */
+}
+
+
+/* Estilos para a tabela */
+
+#dashboard-table {
+  margin-top: 170px;
+  margin-bottom: 100%;
+}
+
+#dashboard-table table {
+  width: 100%;
+  border-collapse:separate;
+  margin-top: 20px;
+}
+
+#dashboard-table th,
+#dashboard-table td {
+  padding: 8px;
+  border: 1px solid #333333;
+  text-align: center;
+}
+#dashboard-table td {
+  background-color: #212121;
+  color: rgb(196, 196, 196);
+}
+
+
+#dashboard-table th {
+  background-color: #212121;
+  color: white;
+}
+
+
+
+
+
+
+
+.footer {
+  text-align: center;
+  background-color: #333;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+/* PAGINA DE SUCESSO */
+
+.pagina-de-sucesso {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.success-message {
+  color: #008000;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-container a:hover {
+  background-color: #45a049;
+}
+
+
+
